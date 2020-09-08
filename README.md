@@ -10,7 +10,3 @@ My personal blog theme is built using October CMS.
 
 Paul Tippetts 
 [@PaulTippetts](https://twitter.com/PaulTippetts)
-
-## License
-
-This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
