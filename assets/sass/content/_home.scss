@@ -1,0 +1,20 @@
+.blog-posts-home > *:not(.post-list),
+.photograph-galleries-home > *:not(.record-list) {
+    padding: 0 $padding__small;
+    @media screen and (min-width: 768px) {
+        padding: 0 $padding__medium;
+    }
+    @media screen and (min-width: 992px) {
+        padding: 0 $padding__large;
+    }
+    @media screen and (min-width: 1200px) {
+        padding: 0 $padding__x-large;
+    }
+}
+
+.page-link-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 3rem 0;     
+}

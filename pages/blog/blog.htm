@@ -1,0 +1,80 @@
+title = "Blog"
+url = "/blog/:page?"
+layout = "default"
+description = "Blog page"
+is_hidden = 0
+
+[blogPosts]
+pageNumber = "{{ :page }}"
+postsPerPage = 5
+noPostsMessage = "No posts found"
+sortOrder = "published_at desc"
+categoryPage = 404
+postPage = "blog/post"
+==
+{% put title %}Blog | Paul Tippetts{% endput %}
+
+{% put scripts %}
+    <script type="text/javascript" src="{{ ['assets/js.min/main.min.js']|theme }}"></script>
+{% endput %}
+
+<header id="page-header" class="page-header">
+    <h1 class="page-title">{{ this.page.title }}</h1>
+    <p class="page-description">Blog description</p>
+</header>
+
+{% set posts = blogPosts.posts %}
+
+<ul class="post-list">
+    {% for post in posts %} 
+        <li>       
+            <h2 class="post-title"><a href="{{ post.url }}">{{ post.title }}</a></h2>
+
+            <p class="info">
+                <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="calendar" class="svg-inline--fa fa-calendar fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M400 64h-48V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H160V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48zm-6 400H54c-3.3 0-6-2.7-6-6V160h352v298c0 3.3-2.7 6-6 6z"></path></svg>
+                {{ post.published_at|date('jS M, Y') }}
+            </p>
+
+            {% if post.featured_images.count %}
+                <div id="featured-image" class="featured-image">
+                {% for image in post.featured_images|slice(0, 1) %}
+                    <a href="{{ post.url }}">
+                        <img
+                            data-src="{{ image.filename }}"
+                            src="{{ image.thumb(768, 512, 'crop') }}"
+                            alt="{{ image.description != null ? image.description : image.filename }}"
+                            title="{{ image.title != null ? image.title : post.title }}" 
+                        />
+                    </a>
+                {% endfor %}
+                </div>
+            {% endif %}
+
+            <p class="excerpt">
+                {{ post.summary|raw }}
+                <br>
+                <a class="read-more" href="{{ post.url }}">Read more</a>
+            </p>            
+        </li>
+    {% else %}
+        <li class="no-data no-data-blog-page">{{ blogPosts.noPostsMessage }}</li>
+    {% endfor %}
+</ul>
+
+{% if posts.lastPage > 1 %}
+    <ul class="pagination">
+        {% if posts.currentPage > 1 %}
+            <li><a class="button prev-page" href="{{ this.page.baseFileName|page({ (blogPosts.pageParam): (posts.currentPage-1) }) }}"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-alt-left" class="svg-inline--fa fa-arrow-alt-left fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M448 208v96c0 13.3-10.7 24-24 24H224v103.8c0 21.4-25.8 32.1-41 17L7 273c-9.4-9.4-9.4-24.6 0-34L183 63.3c15.1-15.1 41-4.4 41 17V184h200c13.3 0 24 10.7 24 24z"></path></svg>Prev</a></li>
+        {% endif %}
+
+        {% for page in 1..posts.lastPage %}
+            <li class="{{ posts.currentPage == page ? 'active' : null }}">
+                <a class="button" href="{{ this.page.baseFileName|page({ (blogPosts.pageParam): page }) }}">{{ page }}</a>
+            </li>
+        {% endfor %}
+
+        {% if posts.lastPage > posts.currentPage %}
+            <li><a class="button next-page" href="{{ this.page.baseFileName|page({ (blogPosts.pageParam): (posts.currentPage+1) }) }}">Next<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-alt-right" class="svg-inline--fa fa-arrow-alt-right fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 304v-96c0-13.3 10.7-24 24-24h200V80.2c0-21.4 25.8-32.1 41-17L441 239c9.4 9.4 9.4 24.6 0 34L265 448.7c-15.1 15.1-41 4.4-41-17V328H24c-13.3 0-24-10.7-24-24z"></path></svg></a></li>
+        {% endif %}
+    </ul>
+{% endif %}

@@ -1,0 +1,61 @@
+.site-footer {
+    padding: 0 $padding__small;
+    margin: 4rem 0;
+    @media screen and (min-width: 768px) {
+        padding: 0 $padding__medium;
+    }
+    @media screen and (min-width: 992px) {
+        padding: 0 $padding__large;
+        margin-left: $nav-bar__height;
+    }
+    @media screen and (min-width: 1200px) {
+        padding: 0 $padding__x-large;
+    }
+}
+
+.contact-email {
+    font-size: 1.44rem;
+    @media screen and (min-width: 768px) {
+        font-size: 1.563em;
+    }
+}
+
+.copyright {
+    margin-bottom: 1.5rem;
+}
+
+.menu-social-footer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    @media screen and (min-width: 992px) {
+        display: none;
+    }
+}
+
+.menu-social-footer .svg-inline--fa {
+    display: block;
+    height: 0.9rem;
+    width: auto;    
+}
+
+.social-link-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 50px;
+    margin-right: 0.5rem;
+    border: 3px solid $gray-80;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+    &:hover,
+    &:focus {
+        color: $gray-15;
+        background: $gray-80;
+    }
+}
+
+.social-link-footer::after {
+    content: none;
+}

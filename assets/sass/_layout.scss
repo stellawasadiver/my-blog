@@ -1,0 +1,10 @@
+.site-main {
+    position: relative;
+    display: grid;
+    margin: $nav-bar__height 0 0;
+    max-width: calc(1440px - #{$nav-bar__height});
+    overflow-x: hidden;
+    @media screen and (min-width: 992px) {
+        margin: 0 0 0 $nav-bar__height;
+    }
+}

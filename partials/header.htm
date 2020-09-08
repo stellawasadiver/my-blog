@@ -1,0 +1,68 @@
+description = "Header partial"
+==
+<div id="nav-bar" class="nav-bar">        
+    <a id="site-logo" class="site-logo" href="{{ 'home'|page }}">
+        <div class="screen-reader-text">{{ this.theme.config.name }}</div>
+        <svg width="100%" height="100%" viewBox="0 0 200 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+            <path id="Background" d="M100,3C153.536,3 197,46.464 197,100C197,153.536 153.536,197 100,197C46.464,197 3,153.536 3,100C3,46.464 46.464,3 100,3ZM142.74,67.115L118.583,84.462C119.115,86.231 119.4,88.105 119.4,90.045C119.4,100.752 110.707,109.445 100,109.445C95.819,109.445 91.945,108.119 88.777,105.866L51.5,132.635L51.5,158.455L80.6,158.455L80.6,134.503C86.543,137.103 93.105,138.545 100,138.545C126.768,138.545 148.5,116.813 148.5,90.045C148.5,81.752 146.414,73.943 142.74,67.115ZM135.375,56.879C126.525,47.444 113.946,41.545 100,41.545C73.232,41.545 51.5,63.277 51.5,90.045L51.5,117.111L81.417,95.627C80.885,93.859 80.6,91.985 80.6,90.045C80.6,79.338 89.293,70.645 100,70.645C104.181,70.645 108.055,71.97 111.223,74.223L135.375,56.879Z" style="fill:url(#_Linear1);"/>
+            <defs>
+                <linearGradient id="_Linear1" x1="0" y1="0" x2="1" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="matrix(194,194,-194,194,3,3)"><stop offset="0" style="stop-color:rgb(125,96,204);stop-opacity:1"/><stop offset="1" style="stop-color:rgb(243,66,19);stop-opacity:1"/></linearGradient>
+            </defs>
+        </svg>
+    </a>  
+    <nav id="primary-nav" class="primary-nav" aria-label="Main">    
+        <ul id="menu-main" class="menu-main menu-hide">
+            <li class="menu-item">
+                <a href="{{ 'home'|page }}">
+                    <span class="page-name">Home</span>
+                    <span class="page-description">Home description</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="{{ 'about'|page }}">
+                    <span class="page-name">About</span>
+                    <span class="page-description">About description</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="{{ 'blog/blog'|page }}">
+                    <span class="page-name">Blog</span>
+                    <span class="page-description">Blog description</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="{{ 'photography/photography'|page }}">
+                    <span class="page-name">Photos</span>
+                    <span class="page-description">Photos description</span>
+                </a>
+            </li>
+        </ul>
+        <div id="menu-social" class="menu-social menu-show">
+            <a class="social-link" href="https://www.facebook.com/paul.tippetts.9">
+                <span class="screen-reader-text">facebook</span>
+                <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="facebook-f" class="svg-inline--fa fa-facebook-f fa-w-10" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">              
+                    <path fill="currentColor" d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z">                    
+                    </path>
+                </svg>
+            </a>
+            <a class="social-link" href="https://twitter.com/PaulTippetts">
+                <span class="screen-reader-text">twitter</span>
+                <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="twitter" class="svg-inline--fa fa-twitter fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                    <path fill="currentColor" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path>
+                </svg>
+            </a>
+            <!-- <a class="social-link" href="https://www.flickr.com/photos/186670962@N05/">
+                <span class="screen-reader-text">flickr</span>
+                <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="flickr" class="svg-inline--fa fa-flickr fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <path fill="currentColor" d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM144.5 319c-35.1 0-63.5-28.4-63.5-63.5s28.4-63.5 63.5-63.5 63.5 28.4 63.5 63.5-28.4 63.5-63.5 63.5zm159 0c-35.1 0-63.5-28.4-63.5-63.5s28.4-63.5 63.5-63.5 63.5 28.4 63.5 63.5-28.4 63.5-63.5 63.5z"></path>
+                </svg>
+            </a>          -->
+        </div>
+    </nav>
+    <button id="nav-button" class="nav-button">
+        <span class="screen-reader-text">Open Navigation</span>
+        <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="align-right" class="icon-menu-small svg-inline--fa fa-align-right fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M16 216h416a16 16 0 0 0 16-16v-16a16 16 0 0 0-16-16H16a16 16 0 0 0-16 16v16a16 16 0 0 0 16 16zm416 208H16a16 16 0 0 0-16 16v16a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-16a16 16 0 0 0-16-16zm3.17-384H172.83A12.82 12.82 0 0 0 160 52.83v22.34A12.82 12.82 0 0 0 172.83 88h262.34A12.82 12.82 0 0 0 448 75.17V52.83A12.82 12.82 0 0 0 435.17 40zm0 256H172.83A12.82 12.82 0 0 0 160 308.83v22.34A12.82 12.82 0 0 0 172.83 344h262.34A12.82 12.82 0 0 0 448 331.17v-22.34A12.82 12.82 0 0 0 435.17 296z"></path></svg>
+        <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="align-left" class="icon-menu-large svg-inline--fa fa-align-left fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M12.83 344h262.34A12.82 12.82 0 0 0 288 331.17v-22.34A12.82 12.82 0 0 0 275.17 296H12.83A12.82 12.82 0 0 0 0 308.83v22.34A12.82 12.82 0 0 0 12.83 344zm0-256h262.34A12.82 12.82 0 0 0 288 75.17V52.83A12.82 12.82 0 0 0 275.17 40H12.83A12.82 12.82 0 0 0 0 52.83v22.34A12.82 12.82 0 0 0 12.83 88zM432 168H16a16 16 0 0 0-16 16v16a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-16a16 16 0 0 0-16-16zm0 256H16a16 16 0 0 0-16 16v16a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-16a16 16 0 0 0-16-16z"></path></svg>
+        <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="times" class="icon-menu-close svg-inline--fa fa-times fa-w-10" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M207.6 256l107.72-107.72c6.23-6.23 6.23-16.34 0-22.58l-25.03-25.03c-6.23-6.23-16.34-6.23-22.58 0L160 208.4 52.28 100.68c-6.23-6.23-16.34-6.23-22.58 0L4.68 125.7c-6.23 6.23-6.23 16.34 0 22.58L112.4 256 4.68 363.72c-6.23 6.23-6.23 16.34 0 22.58l25.03 25.03c6.23 6.23 16.34 6.23 22.58 0L160 303.6l107.72 107.72c6.23 6.23 16.34 6.23 22.58 0l25.03-25.03c6.23-6.23 6.23-16.34 0-22.58L207.6 256z"></path></svg>
+    </button>    
+</div>  

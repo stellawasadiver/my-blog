@@ -1,0 +1,31 @@
+name = "Default"
+description = "Default layout"
+==
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% placeholder title %}</title>  
+    <link rel="icon" type="image/png" href="{{ 'assets/images/favicon.png'|theme }}">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,400i,700,700i|Teko:600&display=swap" rel="stylesheet">  
+    <link href="{{ ['assets/css/theme.css']|theme }}" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a416aaacf7.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header id="masthead" class="site-header">
+        {% partial "header" %}
+    </header>
+
+    <main id="main" class="site-main">
+        {% page %}
+    </main>
+    
+    <footer id="colophon" class="site-footer">        
+        {% partial "footer" %}
+    </footer>
+
+    {% scripts %}
+</body>
+</html>

@@ -1,0 +1,62 @@
+$white: #ffffff;
+$gray-98: #f3f3f3;
+$gray-95: #EDEDED;
+$gray-90: #E3E3E3;
+$gray-85: #D9D9D9;
+$gray-80: #CCCCCC;
+$gray-75: #C0C0C0;
+$gray-70: #B0B0B0;
+$gray-60: #999999;
+$gray-50: #808080;
+$gray-45: #727272;
+$gray-40: #696969;
+$gray-30: #4D4D4D;
+$gray-20: #363636;
+$gray-15: #222222;
+$gray-10: #171717;
+$black: #000000;
+
+/* Coolors Exported Palette - coolors.co/69215d-7d60cc-e93148-f34213-f9cd23 */
+
+/* HSL */
+// $purple: hsla(310%, 52%, 27%, 1);
+// $blue: hsla(256%, 51%, 59%, 1);
+// $red: hsla(353%, 81%, 55%, 1);
+// $orange: hsla(13%, 90%, 51%, 1);
+// $yellow: hsla(48%, 95%, 56%, 1);
+
+/* RGB */
+$purple: rgba(105, 33, 93, 1);
+$blue: rgba(125, 96, 204, 1);
+$red: rgba(233, 49, 72, 1);
+$orange: rgba(243, 66, 19, 1);
+$yellow: rgba(249, 205, 35, 1);
+
+$font__main: 'Poppins', sans-serif;
+$font__headings: 'Teko', sans-serif;
+
+$font__weight-body: 400;
+$font__weight-headings: 600;
+
+$font__line-height-body: 1.5;
+$font__line-height-headings: 1.1;
+
+$font__color-body: $gray-15;
+$font__color-headings: $font__color-body;
+
+$font__size-small: 1rem;
+$font__size-medium: 1.1rem;
+$font__size-large: 1.15rem;
+$font__size-x-large: 1.2rem;
+
+$padding__small: 1.2rem;
+$padding__medium: 1.6rem;
+$padding__large: 2.1rem;
+$padding__x-large: 2.7rem;
+
+$nav-bar__height: 63px;
+$nav-item__height: 60px;
+
+:root {
+    --vh: 100vh;
+}

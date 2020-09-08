@@ -1,0 +1,73 @@
+title = "Post"
+url = "/blog/post/:slug"
+layout = "default"
+description = "Post page"
+is_hidden = 0
+
+[blogPost]
+slug = "{{ :slug }}"
+categoryPage = "blog/category"
+==
+<?php
+function onEnd()
+{
+    $this['title'] = $this->post->title;
+}
+?>
+==
+{% put title %}{{ title }} | Paul Tippetts{% endput %}
+
+{% put scripts %}
+    <script type="text/javascript" src="{{ ['assets/js.min/main.min.js']|theme }}"></script>
+{% endput %}
+
+<header id="post-header" class="post-header">   
+    <h1 class="post-title">{{ title }}</h1>
+
+    <span class="info">
+        <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="calendar" class="svg-inline--fa fa-calendar fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M400 64h-48V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H160V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48zm-6 400H54c-3.3 0-6-2.7-6-6V160h352v298c0 3.3-2.7 6-6 6z"></path></svg>
+        {{ post.published_at|date('jS M, Y') }}
+    </span>
+</header>
+
+{% if post.featured_images.count %}
+<div class="post-featured-image">
+    {% for image in post.featured_images|slice(0, 1) %}
+        <img
+            data-src="{{ image.filename }}"
+            src="{{ image.thumb(1377, 918,'crop') }}"
+            alt="{{ image.description != null ? image.description : image.filename }}"
+            title="{{ image.title != null ? image.title : post.title }}" 
+        />            
+    {% endfor %}
+</div>
+{% endif %}
+
+
+{% set post = blogPost.post %}
+
+<div id="post-content" class="post-content">
+    {{ post.content_html|raw }}
+    <div class="post-comments">
+        <div id="disqus_thread"></div>
+        <script>
+
+        /**
+        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+        /*
+        var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        */
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://http-dev-myblog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</div>

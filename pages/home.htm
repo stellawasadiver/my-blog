@@ -1,0 +1,153 @@
+title = "Home"
+url = "/"
+layout = "default"
+description = "Home page"
+is_hidden = 0
+
+[blogPosts]
+
+[blogPosts blogPostsHome]
+pageNumber = "{{ :page }}"
+postsPerPage = 3
+noPostsMessage = "No posts found"
+sortOrder = "published_at desc"
+categoryPage = 404
+postPage = "blog/post"
+
+[builderList]
+modelClass = "PaulTippetts\Photography\Models\Gallery"
+sortColumn = "date"
+displayColumn = "title"
+
+[builderList builderListHome]
+modelClass = "PaulTippetts\Photography\Models\Gallery"
+scope = "-"
+scopeValue = "{{ :scope }}"
+sortColumn = "date"
+sortDirection = "desc"
+displayColumn = "title"
+noRecordsMessage = "No galleries found"
+detailsPage = "photography/gallery"
+detailsKeyColumn = "slug"
+detailsUrlParameter = "slug"
+recordsPerPage = 3
+pageNumber = "{{ :page }}"
+==
+{% put title %}Home | Paul Tippetts{% endput %}
+
+{% put scripts %}
+    <script type="text/javascript" src="{{ ['assets/js.min/main.min.js']|theme }}"></script>
+{% endput %}
+
+<header id="page-header" class="page-header">
+    <h1 class="screen-reader-text">{{ this.theme.config.name }}</h1>
+    <p class="page-title">Home</p>
+    <p class="page-description">Home description</p>
+</header>
+
+<section class="blog-posts-home">
+    <h2>Latest Posts</h2>
+
+    {% set posts = blogPostsHome.posts %}
+
+    <ul class="post-list">
+        {% for post in posts %} 
+            <li>       
+                <h3 class="post-title"><a href="{{ post.url }}">{{ post.title }}</a></h3>
+
+                <p class="info">
+                    <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="calendar" class="svg-inline--fa fa-calendar fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M400 64h-48V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H160V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48zm-6 400H54c-3.3 0-6-2.7-6-6V160h352v298c0 3.3-2.7 6-6 6z"></path></svg>
+                    {{ post.published_at|date('jS M, Y') }}
+                </p>
+
+                {% if post.featured_images.count %}
+                    <div id="featured-image" class="featured-image">
+                    {% for image in post.featured_images|slice(0, 1) %}
+                        <a href="{{ post.url }}">
+                            <img
+                                data-src="{{ image.filename }}"
+                                src="{{ image.thumb(768, 512, 'crop') }}"
+                                alt="{{ image.description != null ? image.description : image.filename }}"
+                                title="{{ image.title != null ? image.title : post.title }}" 
+                            />
+                        </a>
+                    {% endfor %}
+                    </div>
+                {% endif %}
+
+                <p class="excerpt">
+                    {{ post.summary|raw }}
+                    <br>
+                    <a class="read-more" href="{{ post.url }}">Read more</a>
+                </p>            
+            </li>
+        {% else %}
+            <li class="no-data">{{ blogPostsHome.noPostsMessage }}</li>
+        {% endfor %}
+    </ul>
+    {% if blogPosts.posts|length > 3 %} 
+        <div class="page-link-wrapper">
+            <a class="button page-link" href="{{ 'blog/blog'|page }}">View more posts</a>
+        </div>
+    {% endif %}   
+</section>
+
+<section class="photograph-galleries-home">
+
+    <h2>Latest galleries</h2>
+
+    {% set records = builderListHome.records %}
+    {% set displayColumn = builderListHome.displayColumn %}
+    {% set noRecordsMessage = builderListHome.noRecordsMessage %}
+    {% set detailsPage = builderListHome.detailsPage %}
+    {% set detailsKeyColumn = builderListHome.detailsKeyColumn %}
+    {% set detailsUrlParameter = builderListHome.detailsUrlParameter %}
+
+    <ul class="record-list">
+        {% for record in records %}
+            <li>
+                {# Use spaceless tag to remove spaces inside the A tag. #}
+                {% spaceless %}
+                    <h3 class="gallery-title">
+                        {% if detailsPage %}
+                            <a href="{{ detailsPage|page({ (detailsUrlParameter): attribute(record, detailsKeyColumn) }) }}">                        
+                        {% endif %}                        
+
+                        {{ attribute(record, displayColumn) }}
+
+                        {% if detailsPage %}
+                            </a>
+                        {% endif %}
+                    </h3>
+
+                    <span class="info">
+                        <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="calendar" class="svg-inline--fa fa-calendar fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M400 64h-48V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H160V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48zm-6 400H54c-3.3 0-6-2.7-6-6V160h352v298c0 3.3-2.7 6-6 6z"></path></svg>
+                        {{ record.date|date('jS M, Y') }}
+                    </span>
+
+                    {% if detailsPage %}
+                        <a class="featured-image" href="{{ detailsPage|page({ (detailsUrlParameter): attribute(record, detailsKeyColumn) }) }}">                        
+                    {% endif %}
+                    
+                    <img 
+                        data-src="{{ record.feature_image.filename }}"
+                        src="{{ record.feature_image.thumb(768, 512,'crop') }}"
+                        alt="{{ record.feature_image.description != null ? record.feature_image.description : record.feature_image.filename }}"
+                        title="{{ record.feature_image.title != null ? record.feature_image.title : attribute(record, displayColumn) }}" 
+                    />
+
+                    {% if detailsPage %}
+                        </a>
+                    {% endif %}                                      
+                {% endspaceless %}
+            </li>
+        {% else %}
+            <li class="no-data">{{ noRecordsMessage }}</li>
+        {% endfor %}
+    </ul>  
+    {% if builderList.records|length > 3 %} 
+        <div class="page-link-wrapper">
+            <a class="button page-link" href="{{ 'photography/photography'|page }}">View more galleries</a>
+        </div>
+    {% endif %}
+</section>

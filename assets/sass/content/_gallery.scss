@@ -1,0 +1,84 @@
+.gallery-description {
+    padding: 0 $padding__small;
+    margin-bottom: 1.5rem;
+    @media screen and (min-width: 768px) {
+        padding: 0 $padding__medium 0 calc(#{$padding__medium} - 3px);
+        grid-column-start: 2;
+    }
+    @media screen and (min-width: 992px) {
+        padding: 0 $padding__large 0 calc(#{$padding__large} - 3px);
+    }
+    @media screen and (min-width: 1200px) {
+        padding: 0 $padding__x-large 0 calc(#{$padding__x-large} - 3px);
+    }
+    > p:first-of-type {
+        font-weight: 600;
+    }
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 3px;
+    grid-row-gap: 3px;
+    grid-auto-rows: min-content;
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+    @media screen and (min-width: 550px) {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    @media screen and (min-width: 768px) {  
+        grid-template-columns: 1fr 1fr;      
+        grid-column-start: 1;
+        grid-row-start: 1;
+        margin-left: $padding__medium;
+        border-top: none;
+        border-left: none;
+    }
+    @media screen and (min-width: 992px) {
+       
+        margin-left: $padding__large;
+    }
+    @media screen and (min-width: 1175px) {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    @media screen and (min-width: 1200px) {
+        margin-left: $padding__x-large;
+    }
+    @media screen and (min-width: 1400px) {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
+
+.gallery-wrapper {
+    margin: 1.5rem 0 4rem;
+    @media screen and (min-width: 768px) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        margin-top: $padding__medium;
+    }
+    @media screen and (min-width: 992px) {
+        margin-top: $padding__large;
+    }
+    @media screen and (min-width: 1200px) {
+        grid-template-columns: 1fr 500px;
+        margin-top: $padding__x-large;
+    }
+}
+
+.gallery-comments {
+    grid-column-start: 1;
+    grid-column-end: span 2;
+    margin: 4rem $padding__small 0 $padding__small;
+    max-width: 700px;
+    @media screen and (min-width: 768px) {
+        margin-left: $padding__medium;
+    }
+    @media screen and (min-width: 992px) {
+        margin-left: $padding__large;
+    }
+    @media screen and (min-width: 1200px) {
+        margin-left: $padding__x-large;
+    }
+}
